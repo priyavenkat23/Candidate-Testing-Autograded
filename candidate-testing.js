@@ -44,12 +44,14 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  let numOfCorrectAnswers = 0;
   
   if(candidateAnswers !== null && candidateAnswers.length > 0){
     
     for( let i=0;i<candidateAnswers.length;i++){
       if(candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
         console.log(`The answer you have entered is correct!!\nYour answer is ${candidateAnswers[i]} \nCorrect answer is ${correctAnswers[i]}`);
+        numOfCorrectAnswers++;
       }else{        
         console.log(`The answer you have entered is Wrong!\nYour answer is ${candidateAnswers[i]} \nCorrect answer is ${correctAnswers[i]}`);
       }
@@ -62,7 +64,14 @@ function gradeQuiz(candidateAnswers) {
 
   let grade;  //TODO 3.2 use this variable to calculate the candidates score.
 
-
+  grade = (numOfCorrectAnswers)/(questions.length)*100;
+  if(grade >= 80){
+    console.log(`You have passed the quiz with an ${grade}%. `);
+  }else{
+    console.log(`You have failed the quiz with an ${grade}%. `);
+  }
+  
+  
   return grade;
 }
 
